@@ -1,4 +1,7 @@
 <resources>
-    <string name="app_name">BestHJ</string>
-    <string name="our_name">BsetHJ</string>
+    <string name="app_name">Best HJ</string>
+    <string name="our_name">Bset HJ</string>
+    <string name="person_name">%s</string>
+    <string name="person_school">%s</string>
+    <string name="sport_progress_text">目标：%s km，已跑 %s km</string>
 </resources>
