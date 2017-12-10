@@ -1,4 +1,4 @@
-package com.dontrun.plz.besthj;
+package com.dontrun.plz.besthj.Cal;
 
 import java.security.MessageDigest;
 import java.util.ArrayList;
@@ -8,18 +8,18 @@ import java.util.List;
 import java.util.Map;
 
 
-class BlackBox {
+public class BlackBox {
 	BlackBox() {
     }
 
 	private final static String EQUAL_SIGN = "=";
 	private final static String PARAMETERS_SEPARATOR = "&";
 
-    static String getReturn(Map<String, Object> map, String salt) {
+    public static String getReturn(Map<String, Object> map, String salt) {
         return getMD5(mixSalt(cleanSource((Map<String, Object>) map), salt));
     }
-    
-     static String getMD5(String str) {
+
+    public static String getMD5(String str) {
         int i = 0;
         try {
             MessageDigest instance = MessageDigest.getInstance("MD5");
@@ -67,7 +67,7 @@ class BlackBox {
         return hashMap;
     }
 
-    private static String mixSalt(Map<String, Object> map, String salt) {
+    public  static String mixSalt(Map<String, Object> map, String salt) {
         List<String> keysList = new ArrayList<String>(map.keySet());
         Collections.sort(keysList);
         String ret = "";

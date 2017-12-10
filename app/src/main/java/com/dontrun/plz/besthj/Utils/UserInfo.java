@@ -1,9 +1,12 @@
-package com.dontrun.plz.besthj;
-
+package com.dontrun.plz.besthj.Utils;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UserInfo {
+import com.dontrun.plz.besthj.Cal.*;
+
+
+public class UserInfo implements Serializable {
 
     private int uid;
     private String username;
@@ -33,6 +36,7 @@ public class UserInfo {
     private String bicon;
     private String psign;
     private boolean logined;
+    private String uuid;
     public UserInfo() {
     	logined=false;
 	}
@@ -44,14 +48,20 @@ public class UserInfo {
 		this.logined = logined;
 	}
 	
-	public String getTokensign() {
-        Map<String, Object> hashMap= new HashMap<String, Object>();
-        hashMap.put("timeStamp", Config.getTimeStamp());
+	public String getTokenSign(String timeStamp) {
+        Map<String, Object> hashMap= new HashMap<>();
+        hashMap.put("timeStamp", timeStamp);
         hashMap.put("token", token);
         hashMap.put("uid", uid);
         return BlackBox.getReturn(hashMap, Config.md5_sign_salt);
 	}
-	
+
+	public void setUuid(String uuid){
+		this.uuid = uuid;
+	}
+	public String getUuid(){
+		return uuid;
+	}
 	public String getUsername() {
 		return username;
 	}
@@ -214,4 +224,38 @@ public class UserInfo {
 	public void setPsign(String psign) {
 		this.psign = psign;
 	}
+
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "uid=" + uid +
+                ", username='" + username + '\'' +
+                ", name='" + name + '\'' +
+                ", unid=" + unid +
+                ", campusName='" + campusName + '\'' +
+                ", sex=" + sex +
+                ", icon='" + icon + '\'' +
+                ", campusId='" + campusId + '\'' +
+                ", depart='" + depart + '\'' +
+                ", enrollmentYear=" + enrollmentYear +
+                ", nickname='" + nickname + '\'' +
+                ", role=" + role +
+                ", nameSecret=" + nameSecret +
+                ", departmentSecret=" + departmentSecret +
+                ", yearSecret=" + yearSecret +
+                ", registed=" + registed +
+                ", token='" + token + '\'' +
+                ", alias='" + alias + '\'' +
+                ", userTag='" + userTag + '\'' +
+                ", departmentId=" + departmentId +
+                ", infoComplete=" + infoComplete +
+                ", completeType=" + completeType +
+                ", hasEnum=" + hasEnum +
+                ", height=" + height +
+                ", weight=" + weight +
+                ", bicon='" + bicon + '\'' +
+                ", psign='" + psign + '\'' +
+                ", logined=" + logined +
+                '}';
+    }
 }
